@@ -1,0 +1,114 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey", "Greetings", "Good day", "What's up", "How are you"],
+      "responses": ["Hello! Welcome to KG Reddy College of Engineering & Technology (KGRCET). How can I assist you today?", "Hi there! I'm the KGRCET chatbot. How may I help you?", "Greetings! I'm here to provide information about KG Reddy College. What would you like to know?"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye", "Take care", "Exit", "Quit"],
+      "responses": ["Thank you for contacting KG Reddy College. Have a great day!", "Goodbye! Feel free to reach out if you have more questions about KGRCET.", "Take care! Contact us again for any information about KG Reddy College."]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thank you", "Thanks", "Thanks a lot", "I appreciate it", "That's helpful"],
+      "responses": ["You're welcome! Happy to help with information about KG Reddy College.", "Glad I could assist you with KGRCET information!", "Anytime! If you have more questions about our college, feel free to ask."]
+    },
+    {
+      "tag": "about",
+      "patterns": ["Tell me about the college", "What is KG Reddy College", "College information", "About KGRCET", "College history", "When was the college established"],
+      "responses": ["KG Reddy College of Engineering & Technology (KGRCET) was established in 2008. It is a private autonomous engineering college located near Moinabad/Chilkur in Hyderabad. The college offers undergraduate (B.Tech) and postgraduate (M.Tech, MBA, MCA) programs with industry-facing labs, digital classrooms, placement support, hostels, and transport facilities."]
+    },
+    {
+      "tag": "contact",
+      "patterns": ["Contact information", "How to contact", "Phone number", "Email address", "Contact details", "How to reach"],
+      "responses": ["KG Reddy College of Engineering & Technology (KGRCET) can be contacted at: Phone: +91 90006 33008, Email: info@kgr.ac.in, Website: kgr.ac.in"]
+    },
+    {
+      "tag": "location",
+      "patterns": ["Where is the college located", "College address", "How to reach the college", "Directions to college", "College location", "Where is KGRCET"],
+      "responses": ["KG Reddy College is located at: Chilkur Village, Moinabad Mandal, Ranga Reddy District, Telangana - 501504 (near Moinabad Police Station)."]
+    },
+    {
+      "tag": "affiliation",
+      "patterns": ["College affiliation", "Which university", "Affiliated to", "Accreditation", "AICTE approval", "NAAC", "NBA"],
+      "responses": ["KG Reddy College is affiliated to Jawaharlal Nehru Technological University, Hyderabad (JNTUH) and operates as an autonomous institution with UGC autonomous status. The college is AICTE-approved and NAAC accredited. Several departments also have NBA accreditation."]
+    },
+    {
+      "tag": "courses",
+      "patterns": ["What courses are offered", "Programs available", "Courses", "Degree programs", "B.Tech courses", "M.Tech courses", "MBA", "MCA"],
+      "responses": ["KG Reddy College offers: Undergraduate B.Tech programs in CSE (including AI/ML and Data Science specializations), ECE, EEE, Mechanical Engineering, and Civil Engineering. Postgraduate programs include M.Tech specializations, MBA, and MCA. Please visit the college website for the latest intake details."]
+    },
+    {
+      "tag": "btech",
+      "patterns": ["B.Tech programs", "Undergraduate courses", "Engineering programs", "B.Tech specializations", "B.Tech branches"],
+      "responses": ["KG Reddy College offers B.Tech programs in: Computer Science & Engineering (CSE), CSE with AI/ML, CSE with Data Science, Electronics & Communication Engineering (ECE), Electrical & Electronics Engineering (EEE), Mechanical Engineering, and Civil Engineering. Typical intake varies by program, with CSE having around 300 seats, CSE-Data Science 60 seats, ECE 60 seats, Mechanical 30 seats, and Civil 30 seats."]
+    },
+    {
+      "tag": "pg",
+      "patterns": ["Postgraduate programs", "M.Tech", "MBA", "MCA", "Master's programs", "PG courses"],
+      "responses": ["KG Reddy College offers postgraduate programs including M.Tech specializations (in CSE, VLSI, etc.), MBA, and MCA. Program availability and seat counts are listed on the college website."]
+    },
+    {
+      "tag": "admissions",
+      "patterns": ["Admission process", "How to apply", "Admission requirements", "Entrance exams", "How to get admission", "Application process"],
+      "responses": ["For B.Tech admissions at KG Reddy College: Students typically enter through state entrance rank/seat allocation (TS-EAMCET or state counselling) or management quota. The EAMCET Code for KGRCET is KGRH. For M.Tech: Admissions are generally via GATE/PGECET/university counselling. For MBA/MCA: Admissions are through TS ICET or university counselling."]
+    },
+    {
+      "tag": "fees",
+      "patterns": ["Fee structure", "College fees", "Tuition fees", "How much is the fee", "Annual fees", "Course fees", "Fee payment"],
+      "responses": ["At KG Reddy College, fee structures vary by course and category. B.Tech yearly fees range approximately from Rs.90,000 to Rs.1,03,000 (varies by branch and year). PG/MBA/MCA fees also vary (example: MCA around Rs.90,000 total). For exact and current fee details, please visit the official fees/finance page on the college website."]
+    },
+    {
+      "tag": "placements",
+      "patterns": ["Placement details", "Job opportunities", "Campus placements", "Recruitment", "Companies visiting", "Placement statistics", "Package offered"],
+      "responses": ["KG Reddy College has a strong placement record. Recent placement statistics show highest package figures reaching up to Rs.16 LPA in some years. Average packages typically range between Rs.4-7 LPA depending on the year and branch. The college hosts a variety of recruiters. For the most current placement information, please refer to the placement page on the college website."]
+    },
+    {
+      "tag": "facilities",
+      "patterns": ["College facilities", "Campus facilities", "Infrastructure", "Amenities", "What facilities are available"],
+      "responses": ["KG Reddy College offers comprehensive facilities including: A large central library (~7,480 sq ft) with 25,700+ volumes and access to thousands of e-journals/e-books, boys' hostel on campus and girls' hostel in Mehdipatnam, college bus transport with city pick-up points, department labs, digital classrooms, Wi-Fi campus, sports facilities, cafeteria, gym, and auditorium."]
+    },
+    {
+      "tag": "library",
+      "patterns": ["Library facilities", "Books available", "Library", "E-journals", "Study resources"],
+      "responses": ["KG Reddy College has a large central library spanning approximately 7,480 sq ft. It houses over 25,700 volumes and provides access to thousands of e-journals and e-books for students and faculty."]
+    },
+    {
+      "tag": "hostel",
+      "patterns": ["Hostel facilities", "Accommodation", "Hostel", "Boarding facilities", "Stay options", "Hostel fees"],
+      "responses": ["KG Reddy College provides hostel facilities for students. There is a boys' hostel located on campus, while the girls' hostel is situated in Mehdipatnam. For details about hostel fees and amenities, please check the college website or contact the administration."]
+    },
+    {
+      "tag": "transport",
+      "patterns": ["Transport facilities", "College bus", "Bus routes", "Transportation", "How to commute", "Bus service"],
+      "responses": ["KG Reddy College provides transport facilities with college buses operating on various routes with city pick-up points. For specific route details and pick-up points, please refer to the transport page on the college website."]
+    },
+    {
+      "tag": "departments",
+      "patterns": ["College departments", "Academic departments", "Departments available", "List of departments"],
+      "responses": ["KG Reddy College has several departments including: CSE, CSE (AI/ML), CSE (Data Science), ECE, EEE, Mechanical, Civil, MBA (Business Administration), and Humanities & Sciences. The college also has an Institution Innovation Cell, incubation/entrepreneur support, and research/industry cells."]
+    },
+    {
+      "tag": "student_life",
+      "patterns": ["Student life", "College events", "Extracurricular activities", "Clubs", "Fests", "Student activities"],
+      "responses": ["Student life at KG Reddy College is vibrant with annual technical and cultural fests (such as IKARUS, IGNUS, and INVICTA), student council activities, sports events, technical clubs, and participation in IIC & incubation programs."]
+    },
+    {
+      "tag": "documents",
+      "patterns": ["Required documents", "College documents", "Forms", "Certificates", "Transcripts", "Download forms"],
+      "responses": ["KG Reddy College provides various documents including prospectus & brochure, course syllabus, exam timetables, fee payment forms, hostel forms, and transcript/duplicate memo forms. These are available on the college website under 'Downloads/Student Corner/Examination' pages."]
+    },
+    {
+      "tag": "btech_requirements",
+      "patterns": ["B.Tech admission requirements", "Eligibility for B.Tech", "B.Tech entrance", "How to get into B.Tech"],
+      "responses": ["For B.Tech admission at KG Reddy College, you need 10+2 with PCM + TS EAMCET / state counselling OR meet management quota rules. The EAMCET code for KGRCET is KGRH."]
+    },
+    {
+      "tag": "fallback",
+      "patterns": ["", " ", "unknown"],
+      "responses": ["I'm sorry, I didn't understand your question about KG Reddy College. Could you please rephrase or ask about our courses, admissions, fees, facilities, or placements?", "I'm not sure I understand your query about KGRCET. You can ask me about our programs, admission process, campus facilities, or contact information.", "I didn't catch that. As the KG Reddy College chatbot, I can help with information about courses, fees, admissions, placements, and campus facilities."]
+    }
+  ]
+}

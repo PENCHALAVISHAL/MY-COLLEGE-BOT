@@ -9,19 +9,15 @@
     <div class="container">
         <h1>College Chatbot</h1>
         <div id="chat-container">
-            <div class="box">
-                <div class="message chatbot-message">
-                    <div class="message-content">
-                        <div class="message-text">Hi! I'm a chatbot. How can I assist you today?</div>
-                    </div>
+            <div class="message chatbot-message">
+                <div class="message-content">
+                    Hi! I'm a chatbot. How can I assist you today?
                 </div>
             </div>
         </div>
         <form id="user-input-form">
-            <div class="box">
-                <input type="text" id="user-input" placeholder="Type your message..." autofocus autocomplete="off">
-                <button type="submit" class="send-button">Send</button>
-            </div>
+            <input type="text" id="user-input" placeholder="Type your message..." autofocus autocomplete="off">
+            <button type="submit" class="send-button">Send</button>
         </form>
     </div>
 
@@ -45,19 +41,29 @@
             });
 
             function appendUserMessage(message) {
-                var messageElement = $('<div class="message user-message"></div>').text(message);
-                $('#chat-container').append(messageElement);
+                var messageHtml = '<div class="message user-message"><div class="message-content">' + message + '</div></div>';
+                $('#chat-container').append(messageHtml);
                 scrollChatToBottom();
             }
 
             function appendChatbotMessage(message) {
-                var messageElement = $('<div class="message chatbot-message"></div>').text(message);
-                $('#chat-container').append(messageElement);
+                // Convert URLs to clickable links
+                message = linkify(message);
+                var messageHtml = '<div class="message chatbot-message"><div class="message-content">' + message + '</div></div>';
+                $('#chat-container').append(messageHtml);
                 scrollChatToBottom();
             }
 
             function scrollChatToBottom() {
                 $('#chat-container').scrollTop($('#chat-container')[0].scrollHeight);
+            }
+            
+            // Function to convert URLs in text to clickable links
+            function linkify(text) {
+                var urlRegex = /(https?:\/\/[^\s]+)/g;
+                return text.replace(urlRegex, function(url) {
+                    return '<a href="' + url + '" target="_blank">' + url + '</a>';
+                });
             }
         });
     </script>
