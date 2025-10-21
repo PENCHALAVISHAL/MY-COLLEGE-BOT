@@ -1,70 +1,243 @@
-# College Chatbot Using ML Algorithm and NLP Toolkit 
+### Project summary
 
-The College Chatbot(for kg reddy college) is a Python-based chatbot that utilizes machine learning algorithms and natural language processing (NLP) techniques to provide automated assistance to users with college-related inquiries. The chatbot aims to improve the user experience by delivering quick and accurate responses to their questions.
+**Core Functionality:**
+- **College Information Assistant**: Answers questions about KG Reddy College of Engineering & Technology (KGRCET)
+- **Web-based Chat Interface**: Modern, responsive UI accessible at `http://127.0.0.1:5050`
+- **Multi-layered Response System**: Uses 6 different strategies to provide accurate answers
 
-## Features
+**What It Can Answer:**
 
-- **Intent-Based Responses**: Accurately identifies user questions and provides relevant information
-- **Professional UI**: Clean, responsive dark-themed interface with message bubbles
-- **Confidence Threshold**: Prevents incorrect answers by using a 0.6 confidence threshold
-- **Context Memory**: Maintains conversation history for natural multi-turn interactions
-- **Automatic Link Detection**: Converts URLs in responses to clickable links
-- **Fallback Mechanism**: Suggests possible topics when queries are unclear
+1. **College Overview & Identity**
+   - College name, location, establishment details
+   - General information about KGRCET
 
-## Methodology
-The chatbot is developed using a combination of natural language processing techniques and machine learning algorithms. The methodology involves data preparation, model training, and chatbot response generation. The data is preprocessed to remove noise and increase training examples using synonym replacement. Multiple classification models are trained and evaluated to find the best-performing one. The trained model is then used to predict the intent of user input, and a random response is selected from the corresponding intent's responses. The chatbot is developed as a web application using Flask, allowing users to interact with it in real-time.
+2. **Academic Programs**
+   - B.Tech courses (CSE, CSE-AI/ML, CSE-DS, ECE, EEE, Mechanical, Civil)
+   - M.Tech, MBA, MCA programs
+   - Department information and intake details
+
+3. **Admissions Process**
+   - TS EAMCET admission process (EAMCET code: KGRH)
+   - Management quota information
+   - Application procedures
+
+4. **Financial Information**
+   - Fee structure and payment details
+   - Tuition costs (approximately ₹90,000–₹1,03,000/year for B.Tech)
+
+5. **Campus Life & Facilities**
+   - Hostel facilities (boys' hostel on campus, girls' hostel at Mehdipatnam)
+   - Library resources (~25,700+ volumes, e-journals)
+   - Transport services and bus routes
+   - Campus facilities and infrastructure
+
+6. **Career & Placements**
+   - Placement statistics and recruiter information
+   - Highest packages (up to ~₹16 LPA)
+   - Career services and opportunities
+
+7. **Contact & Support**
+   - College address, phone numbers, email
+   - Office hours and contact methods
+   - Location and directions
+
+**How It Works:**
+- **Smart Response Selection**: Tries multiple methods to find the best answer
+- **Official Links**: Provides direct links to college website sections
+- **Fallback Safety**: Always provides helpful responses even for unknown queries
+- **Real-time Interaction**: Instant responses through web interface
+
+**User Experience:**
+- Clean, modern chat interface with message bubbles
+- Quick reply buttons for common topics
+- Mobile-responsive design
+- Safe error handling - never crashes or gives confusing responses
+
+The chatbot essentially serves as a **24/7 virtual college counselor** that can instantly answer most common questions prospective students, current students, or parents might have about KGRCET.
+
+### Key Features
+- ML intent classification using a trained `scikit-learn` model (`model/chatbot_model.pkl`) and `vectorizer.pkl` for text features
+- Structured intents dataset (`dataset/intents1.json`) with tags, patterns, responses for deterministic replies
+- College knowledge base (`dataset/kgr_kb.json`) with keywords → canonical answers (includes official links)
+- Optional semantic retrieval with `sentence-transformers` for meaning-based matches (offline, no internet required after first model load)
+- Optional LLM responses grounded by the knowledge base
+  - Cloud: OpenAI (if `OPENAI_API_KEY` set)
+  - Local: Ollama (if running a local model and `OLLAMA_BASE_URL` configured)
+- Simple, modern chat UI (`templates/index.html`, `static/styles.css`)
 
 
-## Technical Details
-
-### Architecture
-
-- **Frontend**: HTML, CSS, JavaScript with AJAX for asynchronous communication
-- **Backend**: Flask web server
-- **NLP Model**: TF-IDF vectorization with machine learning classification
-- **Alternative Model**: Sentence embeddings for improved semantic understanding
-- **Context Management**: Session-based memory for multi-turn conversations
-- **Confidence System**: Threshold-based response filtering with fallback suggestions
-
-### Files Structure
-
-- `app.py`: Main Flask application with routing and chatbot logic
-- `templates/index.html`: Frontend interface template
-- `static/styles.css`: CSS styling for the chatbot UI
-- `dataset/`: Contains JSON intent files with training data
-- `model/`: Stores trained ML models and vectorizers
-- `train_embeddings_model.py`: Script to train the sentence embeddings model
-
-## Motivation
-The motivation behind this project was to create a simple chatbot using my newly acquired knowledge of Natural Language Processing (NLP) and Python programming. As one of my first projects in this field, I wanted to put my skills to the test and see what I could create.
-
-[I followed a guide referenced in the project](https://thecleverprogrammer.com/2023/03/27/end-to-end-chatbot-using-python/) to learn the steps involved in creating an end-to-end chatbot. This included collecting data, choosing programming languages and NLP tools, training the chatbot, and testing and refining it before making it available to users.
-
-Although this chatbot may not have exceptional cognitive skills or be state-of-the-art, it was a great way for me to apply my skills and learn more about NLP and chatbot development. I hope this project inspires others to try their hand at creating their own chatbots and further explore the world of NLP.
-
+## Architecture Overview
 
 ```
 
-## Usage Examples
+### Request Flow
+1. UI posts `user_input` to `/chat`.
+2. `chatbot_response(user_input)` applies a cascade of strategies with safe fallbacks:
+   - Local Ollama → Cloud OpenAI → Semantic retrieval → Fuzzy match → Exact KB → ML classifier
+3. Returns a short, safe response (HTML allowed for links). When confidence is low, returns a helpful default prompt.
 
-The chatbot can answer questions about:
-- College programs and courses
-- Fee structures
-- Placement statistics
-- Admission procedures
-- Campus facilities
+---
 
-Example interactions:
-- "What programs does the college offer?"
-- "Tell me about CSE placements"
-- "What are the fees for B.Tech?"
-- "And what about its placements?" (demonstrates context memory)
+## Project Structure
 
 
 
+---
 
+## Setup
 
+### Prerequisites
+- Python 3.10–3.12 recommended
+- Windows/macOS/Linux
 
+### Create and activate a virtual environment
+```
+python -m venv .venv
+.venv\Scripts\activate   # Windows PowerShell
+# source .venv/bin/activate  # macOS/Linux
+```
 
+### Install dependencies
+```
+pip install -r requirements.txt
+```
 
+Notes:
+- `sentence-transformers` and `torch` are optional; the app runs without them (semantic retrieval will be skipped). On Windows with Python ≥3.12 you may need to install a compatible `torch` or skip semantic mode.
+- OpenAI and Ollama integrations are optional.
 
+### Run the app
+```
+python app.py
+```
+Open `http://127.0.0.1:5050` in your browser.
+
+---
+
+## Configuration
+
+Environment variables (optional):
+
+```
+# OpenAI (cloud LLM)
+OPENAI_API_KEY=sk-...            # enables OpenAI path
+OPENAI_MODEL=gpt-4o-mini         # optional, default: gpt-4o-mini
+
+# Ollama (local LLM)
+OLLAMA_BASE_URL=http://127.0.0.1:11434
+OLLAMA_MODEL=phi4                # any installed Ollama chat model
+
+# Sentence-Transformers (semantic retrieval)
+SBERT_MODEL=all-MiniLM-L6-v2     # optional, default: all-MiniLM-L6-v2
+```
+
+Place these in a `.env` file or export them in your shell. The app auto-loads `.env` if `python-dotenv` is installed.
+
+---
+
+## Data Formats
+
+### Intents (`dataset/intents1.json`)
+Minimal schema:
+
+```json
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello"],
+      "responses": ["Hello!", "Hi there, how can I help?"],
+      "context_set": ""
+    }
+  ]
+}
+```
+
+Usage:
+- During ML fallback, predicted `tag` selects a random response from the matching intent.
+
+### Knowledge Base (`dataset/kgr_kb.json`)
+Minimal schema:
+
+```json
+{
+  "meta": {
+    "name": "...",
+    "short": "...",
+    "website": "...",
+    "last_updated": "YYYY-MM-DD"
+  },
+  "links": { "home": "...", "admissions": "..." },
+  "intents": [
+    {
+      "tag": "courses_list",
+      "keywords": ["courses", "branches"],
+      "response": "Programs: ... <a href=\"...\">Academics</a>"
+    }
+  ]
+}
+```
+
+Resolution order references this KB for: semantic retrieval, fuzzy match, and exact keyword match.
+
+---
+
+## How Responses Are Generated
+
+`chatbot_response(user_input)` performs:
+1. Input sanitization and empty-check
+2. Optional LLM calls (Ollama → OpenAI) with a system prompt grounded in `kgr_kb.json`
+3. Optional semantic retrieval: cosine similarity over SBERT embeddings of KB responses
+4. Fuzzy keyword matching with RapidFuzz to tolerate minor wording changes
+5. Exact keyword match against KB intents
+6. ML intent classification using `vectorizer.pkl` + `chatbot_model.pkl`, then map `tag` → responses from `intents1.json`
+
+If confidence is low or nothing matches, a safe default hint is returned asking the user to rephrase or try supported topics.
+
+---
+
+## Training the ML Model (overview)
+
+The repository includes pre-trained artifacts in `model/`. If you want to retrain:
+- Prepare/expand `dataset/intents1.json` patterns per tag
+- Tokenize/clean text, generate features (e.g., TF‑IDF)
+- Train a classifier (e.g., Logistic Regression, SVM, etc.)
+- Save artifacts as `chatbot_model.pkl` and `vectorizer.pkl` (must match runtime code)
+
+You can prototype training in `Chatbot.ipynb` / `College Chatbot.ipynb` or your own notebook/script.
+
+---
+
+## Running Locally with Ollama (optional)
+1. Install Ollama from `https://ollama.com/` and start the daemon
+2. Pull a chat model, e.g.: `ollama pull phi4`
+3. Set `OLLAMA_BASE_URL` and `OLLAMA_MODEL` env vars
+4. Start the app and chat
+
+The app will prefer Ollama responses and fall back to other strategies if a local reply fails.
+
+---
+
+## Security & Reliability Considerations
+- Inputs are normalized and sanitized for matching; backend returns plain text or simple HTML links
+- Errors are caught and a generic, user‑friendly message is returned so the UI stays responsive
+- LLM usage is optional; without keys or local models, the app still works via KB + ML
+
+---
+
+## Troubleshooting
+- "Could not reach the server": ensure the Flask app is running on port 5050
+- OpenAI errors: verify `OPENAI_API_KEY` and network access
+- Ollama errors: verify daemon is running and model is available
+- `torch` install issues on Windows: skip semantic retrieval or install a compatible CPU wheel
+
+---
+
+## License
+This project is for educational purposes. Add your preferred license here (e.g., MIT) if you plan to distribute.
+
+---
+
+## Acknowledgments
+- `Flask`, `scikit-learn`, `sentence-transformers`, `rapidfuzz`
+- Public college website data referenced via links stored in the KB
